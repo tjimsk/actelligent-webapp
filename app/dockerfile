@@ -1,0 +1,9 @@
+FROM node:alpine
+
+LABEL name=app
+
+COPY . /src
+
+EXPOSE 8080
+
+ENTRYPOINT node /src/index.js

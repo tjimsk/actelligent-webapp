@@ -1,0 +1,30 @@
+version: '3.6'
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: dockerfile
+    container_name: act_app
+    image: act_app
+    ports:
+      - 8080:8080
+    environment:
+      NODE_ENV: production
+    depends_on: 
+      - sql
+    links: 
+      - sql
+
+  sql:
+    build:
+      context: ./sql
+      dockerfile: dockerfile
+    image: mysql
+    container_name: act_sql
+    image: act_sql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
