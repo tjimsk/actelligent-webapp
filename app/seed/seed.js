@@ -49,11 +49,10 @@ function seed() {
 			// seed suppliers
 			db.query("insert into suppliers (name) values ?", [suppliersValues], (err, results, fields) => {
 				if (err) throw err
-				else console.log("inserted suppliers")
+
 
 				db.query("insert into customers (name) values ?", [customersValues], (err, results, fields) => {
 					if (err) throw err
-					else console.log("inserted customers")
 
 					revenuesValues.map((v) => {
 						db.query(`
@@ -68,7 +67,8 @@ function seed() {
 						)
 					})
 
-					console.log("inserted revenues")
+					console.log("Database seeding success")
+					console.log("App ready for incoming requests")
 				})
 			})
 		})
@@ -85,15 +85,12 @@ db.query(`select count(*) from revenues`, (err, results) => {
 
 		db.query(`delete from revenues;`, (err) => {
 			if (err) throw err
-			else console.log("revenues cleared")
 
 			db.query(`delete from customers`, (err) => {
 				if (err) throw err
-				else console.log("customers cleared")
 
 				db.query(`delete from suppliers`, (err) => {
 					if (err) throw err
-					else console.log("suppliers cleared")
 
 					seed()
 				})

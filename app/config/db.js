@@ -5,20 +5,22 @@ function connectDatabase() {
     if (!db) {
         const host = process.env.NODE_ENV === "production" ? "sql" : "localhost"
 
-        console.log(`sql host is ${host}`)
+        const config = {
+            host: host,
+            user: "root",
+            password: "password",
+            database: "act"
+        }
 
-        db = mysql.createConnection({
-            host     : host,
-            user     : "root",
-            password : "password",
-            database : "act"
-        })
+        console.log(`Connecting to ${config.database} on host ${config.host}...`)
+
+        db = mysql.createConnection(config)
 
         db.connect((err) => {
             if(!err) {
-                console.log("database connection successful")
+                console.log("Database connection successful")
             } else {
-                console.log("database connection failed")
+                console.log("Database connection failed")
             }
         })
     }
