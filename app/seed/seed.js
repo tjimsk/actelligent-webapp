@@ -1,9 +1,10 @@
 const fs = require("fs")
 const parse = require("csv-parse")
+const path = require("path")
 
 var db = require("../config/db")
 
-const seedFilePath = "./seed/data/testdata_supply_chain.csv"
+const seedFilePath = path.resolve(__dirname, "./data/testdata_supply_chain.csv")
 
 function seed() {
 	fs.readFile(seedFilePath, (err, data) => {

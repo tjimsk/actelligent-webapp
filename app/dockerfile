@@ -2,8 +2,16 @@ FROM node:alpine
 
 LABEL name=app
 
-COPY . /src
+RUN mkdir /app
+
+COPY config /app/config
+COPY handlers /app/handlers
+COPY seed /app/seed
+COPY static/public /app/static/public
+COPY node_modules /app/node_modules
+COPY index.js /app/index.js
+COPY package.json /app/package.json
 
 EXPOSE 8080
 
-ENTRYPOINT node /src/index.js
+ENTRYPOINT node /app/index.js
