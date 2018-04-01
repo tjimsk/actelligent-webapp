@@ -13,5 +13,3 @@ A simple web app using ReactJS, Styled Components, ExpressJS, MySQL, CSS Grid, W
 - Run `docker-compose up` to build and start `act_app` and `act_sql`.  Wait for the MySQL container to boot and the web app to finish seeding data.
 - Browse to `http://localhost:8080`
 
-
-## Hosted App (http://167.99.78.110:8080)
